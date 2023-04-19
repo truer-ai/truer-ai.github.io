@@ -2,7 +2,6 @@ import Vue from 'vue'
 import axios from 'axios'
 import App from './App.vue'
 import router from "./router"
-import Mock from "./mock"
 import localStorage from "./utils/localStorage"
 const Storage = new localStorage('NAV')
 Vue.config.productionTip = false

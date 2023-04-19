@@ -36,7 +36,6 @@ function reptile(url, type) {
         }
         arr.push(obj)
       }
-      // 存入数据库
       navData.create(arr, function () {
         
       })
@@ -47,9 +46,9 @@ function reptile(url, type) {
 
 
 async function main() {
-  await reptile('http://chuangzaoshi.com/index', '［设计］')
-  await reptile('http://chuangzaoshi.com/code', '［前端］')
-  await reptile('http://chuangzaoshi.com/operate', '［运营］')
+  await reptile('http://chuangzaoshi.com/index', '［平台］')
+  await reptile('http://chuangzaoshi.com/code', '［应用］')
+  await reptile('http://chuangzaoshi.com/operate', '［生态］')
   await reptile('http://chuangzaoshi.com/product', '［产品］')
 }
 

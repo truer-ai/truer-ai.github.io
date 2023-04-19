@@ -4,64 +4,66 @@
     <div class="left-bar" :style="{left: isLeftbar ? 0 : '-249px'}">
       <div class="title">
         <img class="icon-logo" src="/favicon.ico">
-        <span>猿梦极客导航</span>
-      </div>
-      <el-row>
-        <el-col :span="24">
-          <el-menu
-            :default-active="active"
-            class="el-menu-vertical-demo"
-            background-color="#30333c"
-            text-color="#6b7386"
-            active-text-color="#fff"
-          >
-            <el-submenu :index="item.name" v-for="(item,index) in newDataList" :key="item.name">
-              <template slot="title">
-                <i :class="item.icon"></i>
-                <span slot="title">{{item.name}}</span>
-              </template>
-              <el-menu-item :index="nav._id" v-for="(nav,idx) in item.data" :key="nav._id">
-                <a :href="`#${nav.classify}`">
-                  <i :class="nav.icon"></i>
-                  <span slot="title">{{nav.classify}}</span>
-                </a>
-              </el-menu-item>
-            </el-submenu>
-          </el-menu>
-        </el-col>
-      </el-row>
-    </div>
-    <section class="main">
-      <div id="mainContent">
-        <!-- 手机端菜单 -->
-        <div id="menu-box">
-          <div id="menu">
-            <input type="checkbox" id="menu-form">
-            <label for="menu-form" class="menu-spin" @click="isLeftbar=!isLeftbar">
-              <div class="line diagonal line-1"></div>
-              <div class="line horizontal"></div>
-              <div class="line diagonal line-2"></div>
-            </label>
-          </div>
-        </div>
-        <!-- 开发社区 -->
-        <div class="box" v-for="(item,index) in data" :key="index" :ref="`box-${index}`">
-          <a :id="`#${item.classify}`" :name="item.classify"></a>
-          <div class="sub-category">
-            <div>
-              <i :class="item.icon" class="icon"></i>
-              {{item.classify}}
+            <span>AI 资源导航</span>
             </div>
-          </div>
-          <NavItem :data="sub" v-for="(sub,idx) in item.sites" :key="'sub-'+idx"/>
-        </div>
-      </div>
-      <footer class="footer">
-        <div class="copyright">
-          <div>
-            Copyright © 2019- 2050
-            <a href="https://github.com/geekape/blog">钟储兵博客</a>
-            <a href="https://github.com/geekape/geek-navigation">导航源码下载</a>
+              <el-row>
+                <el-col :span="24">
+                  <el-menu
+                    :default-active="active"
+                    class="el-menu-vertical-demo"
+                    background-color="#30333c"
+                    text-color="#6b7386"
+                    active-text-color="#fff"
+                  >
+                    <el-submenu :index="item.name" v-for="(item, index) in newDataList" :key="item.name">
+                      <template slot="title">
+                        <i :class="item.icon"></i>
+                        <span slot="title">{{ item.name }}</span>
+                      </template>
+                      <el-menu-item :index="nav._id" v-for="(nav, idx) in item.data" :key="nav._id">
+                        <a :href="`#${nav.classify}`">
+                          <i :class="nav.icon"></i>
+                          <span slot="title">{{ nav.classify }}</span>
+                        </a>
+                      </el-menu-item>
+                    </el-submenu>
+                  </el-menu>
+                </el-col>
+              </el-row>
+            </div>
+            <section class="main">
+              <div id="mainContent">
+                <!-- 手机端菜单 -->
+                <div id="menu-box">
+                  <div id="menu">
+                    <input type="checkbox" id="menu-form">
+                    <label for="menu-form" class="menu-spin" @click="isLeftbar = !isLeftbar">
+                      <div class="line diagonal line-1"></div>
+                      <div class="line horizontal"></div>
+                      <div class="line diagonal line-2"></div>
+                    </label>
+                  </div>
+                </div>
+                <!-- 开发社区 -->
+                <div class="box" v-for="(item, index) in data" :key="index" :ref="`box-${index}`">
+                  <a :id="`#${item.classify}`" :name="item.classify"></a>
+                  <div class="sub-category">
+                    <div>
+                      <i :class="item.icon" class="icon"></i>
+                      {{ item.classify }}
+                    </div>
+                  </div>
+                  <NavItem :data="sub" v-for="(sub, idx) in item.sites" :key="'sub-' + idx"/>
+                </div>
+              </div>
+              <footer class="footer">
+                <div class="copyright">
+                  <div>
+                    Copyright © 2019-2023
+                    <a href="https://truer.ai">Truer.AI</a>
+                    <a>   |    </a>
+                    <a href="https://github.com/truer-ai/">提交有趣的应用</a>
+                  </div>
           </div>
         </div>
       </footer>
@@ -90,40 +92,34 @@ export default {
   computed: {
     newDataList() {
       const arr = [];
-      let product = {};
-      let operation = {};
-      let design = {};
-      let web = {};
-      // 产品
-      product.name = "产品";
-      product.icon = "csz czs-circle";
-      product.data = this.data.filter(
-        item => item.classify.indexOf("［产品］") != -1
+      let model = {};
+      let app = {};
+      let docs = {};
+      let platform = {};
+      app.name = "App/应用";
+      app.icon = "csz czs-square";
+      app.data = this.data.filter(
+        item => item.classify.indexOf("［App］") != -1
       );
-      arr.push(product);
-      // 运营
-      operation.name = "运营";
-      operation.icon = "csz czs-square";
-      operation.data = this.data.filter(
-        item => item.classify.indexOf("［运营］") != -1
+      arr.push(app);
+      model.name = "Model/模型";
+      model.icon = "csz czs-circle";
+      model.data = this.data.filter(
+        item => item.classify.indexOf("［Model］") != -1
       );
-      arr.push(operation);
-      // 设计
-      design.name = "设计";
-      design.icon = "csz czs-triangle";
-      design.data = this.data.filter(
-        item => item.classify.indexOf("［设计］") != -1
+      arr.push(model);
+      docs.name = "Docs/文档";
+      docs.icon = "csz czs-triangle";
+      docs.data = this.data.filter(
+        item => item.classify.indexOf("［docs］") != -1
       );
-      arr.push(design);
-      // 前端
-      web.name = "前端";
-      web.icon = "csz czs-camber";
-
-      web.data = this.data.filter(
-        item => item.classify.indexOf("［前端］") != -1
+      arr.push(docs);
+      platform.name = "Platform/平台";
+      platform.icon = "csz czs-camber";
+      platform.data = this.data.filter(
+        item => item.classify.indexOf("［Platform］") != -1
       );
-      arr.push(web);
-
+      arr.push(platform);
       return arr;
     }
   },
@@ -189,12 +185,12 @@ export default {
     }
   },
   mounted() {
-    // window.addEventListener("scroll", this.handleScroll);
+    window.addEventListener("scroll", this.handleScroll);
   },
   created() {
     const that = this;
     this.getData();
-    // window.addEventListener('scroll', this.dataScroll);
+    window.addEventListener('scroll', this.dataScroll);
     window.onresize = () => {
       return (() => {
         window.screenWidth = document.body.clientWidth;

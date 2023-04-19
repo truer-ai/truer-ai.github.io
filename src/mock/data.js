@@ -15,6 +15,7 @@ function pagination(p,s){
         var length = person.data.length;
         var pagePerson = person.data.slice(s*p,(p+1)*s);
         console.log('------------------------查询成功pagePerson');
+
         console.log(pagePerson);
     })
 }
