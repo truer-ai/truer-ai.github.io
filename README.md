@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # geek-navigation 2.0
 
 猿梦极客导航，致力于方便程序员寻找各种网络资源。
@@ -28,3 +29,7 @@ npm run serve
 
 
 
+=======
+# truer-ai.github.io
+A Navigation Website that collects Real AI applications, which allows you to learn more about the real AI development faster.
+>>>>>>> origin/main
